@@ -9,7 +9,7 @@ export const filterEvents = (events, searchText) => {
     const text = name + ' ' + city + ' ' + state;
     return text.toUpperCase().includes(searchText.toUpperCase());
   });
-}
+};
 
 export const filterUserEvents = (userEvents, status) => {
   return userEvents.filter(event => event.attributes.status === status);
@@ -21,18 +21,18 @@ export const filterEventsByDate = (userEvents, future) => {
     const eventDate = new Date(event.attributes.end_date);
     return future ? eventDate >= Date.now() : eventDate < Date.now();
   });
-}
+};
 
 export const EventContainer = ({
   pathname,
   events,
   searchText,
-  userEvents
+  userEvents,
 }) => {
   const styles = pathname.includes('profile')
     ? 'EventContainer profile'
     : 'EventContainer home';
-  
+
   let shownEvents;
 
   if (pathname.includes('upcoming')) {
@@ -73,7 +73,7 @@ export const EventContainer = ({
 export const mapStateToProps = state => ({
   searchText: state.searchText,
   events: state.events,
-  userEvents: state.userEvents
+  userEvents: state.userEvents,
 });
 
 export default connect(mapStateToProps)(EventContainer);
@@ -81,5 +81,5 @@ export default connect(mapStateToProps)(EventContainer);
 EventContainer.propTypes = {
   events: PropTypes.array,
   userEvents: PropTypes.array,
-  searchText: PropTypes.string
+  searchText: PropTypes.string,
 };

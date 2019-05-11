@@ -18,15 +18,18 @@ export const App = ({ getEvents, location, error, user, history }) => {
 
   if (!error) {
     return (
-      <div className='App'>
-        <NavBar user={user}/>
+      <div className="App">
+        <NavBar user={user} />
         <Switch>
-          <Route path='/profile' render={() => <Profile history={history} location={location}/>} />
           <Route
-            path='/'
+            path="/profile"
+            render={() => <Profile history={history} location={location} />}
+          />
+          <Route
+            path="/"
             render={() => (
               <Fragment>
-                <div className='search-and-filters'>
+                <div className="search-and-filters">
                   <SearchBar />
                   <Filters />
                 </div>
@@ -36,24 +39,24 @@ export const App = ({ getEvents, location, error, user, history }) => {
           />
         </Switch>
         <Switch>
-          <Route path='/login' render={() => <Login history={history} />} />
-          <Route path='/event/:id' component={EventPopUp} />
-          <Route path='/profile/upcoming/event/:id' component={EventPopUp} />
-          <Route path='/profile/wishlist/event/:id' component={EventPopUp} />
-          <Route path='/profile/past/event/:id' component={EventPopUp} />
+          <Route path="/login" render={() => <Login history={history} />} />
+          <Route path="/event/:id" component={EventPopUp} />
+          <Route path="/profile/upcoming/event/:id" component={EventPopUp} />
+          <Route path="/profile/wishlist/event/:id" component={EventPopUp} />
+          <Route path="/profile/past/event/:id" component={EventPopUp} />
         </Switch>
-        
       </div>
     );
   } else {
     return (
-      <div className='App'>
+      <div className="App">
         <NavBar />
-        <div className='error-message'>
+        <div className="error-message">
           <h1>Sorry, there was an error. Please try again.</h1>
           <button
-            className='back-button'
-            onClick={() => window.location.reload()}>
+            className="back-button"
+            onClick={() => window.location.reload()}
+          >
             Go Back
           </button>
         </div>
@@ -64,7 +67,7 @@ export const App = ({ getEvents, location, error, user, history }) => {
 
 export const mapStateToProps = state => ({
   error: state.error,
-  user: state.user
+  user: state.user,
 });
 
 export const mapDispatchToProps = dispatch => ({
@@ -82,5 +85,5 @@ App.propTypes = {
   error: PropTypes.string,
   getEvents: PropTypes.func,
   getUser: PropTypes.func,
-  getUserEvents: PropTypes.func
+  getUserEvents: PropTypes.func,
 };
