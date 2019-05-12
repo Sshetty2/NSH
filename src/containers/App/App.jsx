@@ -21,10 +21,7 @@ export const App = ({ getEvents, location, error, user, history }) => {
       <div className="App">
         <NavBar user={user} />
         <Switch>
-          <Route
-            path="/profile"
-            render={() => <Profile history={history} location={location} />}
-          />
+          <Route path="/profile" render={() => <Profile history={history} location={location} />} />
           <Route
             path="/"
             render={() => (
@@ -38,6 +35,7 @@ export const App = ({ getEvents, location, error, user, history }) => {
             )}
           />
         </Switch>
+        {/* the :id specifies wildcard routing.. any route that ends with an id will be dynamically assigned via the match prop */}
         <Switch>
           <Route path="/login" render={() => <Login history={history} />} />
           <Route path="/event/:id" component={EventPopUp} />
@@ -53,10 +51,7 @@ export const App = ({ getEvents, location, error, user, history }) => {
         <NavBar />
         <div className="error-message">
           <h1>Sorry, there was an error. Please try again.</h1>
-          <button
-            className="back-button"
-            onClick={() => window.location.reload()}
-          >
+          <button className="back-button" onClick={() => window.location.reload()}>
             Go Back
           </button>
         </div>
