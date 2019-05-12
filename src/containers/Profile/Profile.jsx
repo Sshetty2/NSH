@@ -22,75 +22,42 @@ export const Profile = ({ location, user, updateUser, setUser, setUserEvents, hi
       setUser({});
       setUserEvents([]);
       history.replace('/');
-    }
+    };
 
     return (
-      <div className='Profile'>
-        <div className='user-profile'>
-          <img
-            src={user.image_url}
-            alt='user headshot'
-            className='user-photo'
-          />
-          <div className='user-bio-section'>
-            <div className='bio-header'>
+      <div className="Profile">
+        <div className="user-profile">
+          <img src={user.image_url} alt="user headshot" className="user-photo" />
+          <div className="user-bio-section">
+            <div className="bio-header">
               {!contentEditable ? (
-                <h1 className='user-name'>{name}</h1>
+                <h1 className="user-name">{name}</h1>
               ) : (
-                <input
-                  className='edit-name-input'
-                  value={name}
-                  onChange={e => editName(e.target.value)}
-                />
+                <input className="edit-name-input" value={name} onChange={e => editName(e.target.value)} />
               )}
-              <button
-                onClick={() => saveUser()}
-                className='edit-profile-button'
-              >
+              <button onClick={() => saveUser()} className="edit-profile-button">
                 {buttonText}
               </button>
-              <button
-                onClick={() => logoutUser()}
-                className='logout-button'
-              >
+              <button onClick={() => logoutUser()} className="logout-button">
                 Logout
               </button>
             </div>
-            <p className='user-about-me'>ABOUT ME</p>
+            <p className="user-about-me">ABOUT ME</p>
             {!contentEditable ? (
-              <p className='user-bio'>{bio}</p>
+              <p className="user-bio">{bio}</p>
             ) : (
-              <textarea
-                className='edit-bio-input'
-                value={bio}
-                onChange={e => editBio(e.target.value)}
-              ></textarea>
+              <textarea className="edit-bio-input" value={bio} onChange={e => editBio(e.target.value)} />
             )}
           </div>
         </div>
-        <div className='view-tabs-section'>
-          <NavLink
-            exact
-            to='/profile/upcoming'
-            className='upcoming-button'
-            activeClassName='active'
-          >
+        <div className="view-tabs-section">
+          <NavLink exact to="/profile/upcoming" className="upcoming-button" activeClassName="active">
             Upcoming
           </NavLink>
-          <NavLink
-            exact
-            to='/profile/wishlist'
-            className='wishlist-button'
-            activeClassName='active'
-          >
+          <NavLink exact to="/profile/wishlist" className="wishlist-button" activeClassName="active">
             Wishlist
           </NavLink>
-          <NavLink
-            exact
-            to='/profile/past'
-            className='past-button'
-            activeClassName='active'
-          >
+          <NavLink exact to="/profile/past" className="past-button" activeClassName="active">
             Past
           </NavLink>
         </div>
@@ -98,18 +65,18 @@ export const Profile = ({ location, user, updateUser, setUser, setUserEvents, hi
       </div>
     );
   } else {
-    return <div></div>;
+    return <div />;
   }
 };
 
 export const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
 });
 
 export const mapDispatchToProps = dispatch => ({
   updateUser: user => dispatch(updateUser(user)),
   setUser: user => dispatch(setUser(user)),
-  setUserEvents: events => dispatch(setUserEvents(events))
+  setUserEvents: events => dispatch(setUserEvents(events)),
 });
 
 export default connect(
@@ -118,5 +85,5 @@ export default connect(
 )(Profile);
 
 Profile.propTypes = {
-  user: PropTypes.object
+  user: PropTypes.object,
 };
