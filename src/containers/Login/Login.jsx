@@ -12,30 +12,51 @@ export const Login = ({ getUser, getUserEvents, history }) => {
     getUser('1');
     getUserEvents('1');
     history.replace('/profile/upcoming');
-  }
+  };
 
-  return(
+  return (
     <Fragment>
-      <div className='overlay'></div>
-      <form autoComplete='off' onSubmit={handleSubmit} className='Login'>
-        <button onClick={() => history.goBack()} className='close-pop-up'></button>
+      <div className="overlay" />
+      <form autoComplete="off" onSubmit={handleSubmit} className="Login">
+        <button onClick={() => history.goBack()} className="close-pop-up" />
         <h3>User Login</h3>
-        <label>Email
-              <input onChange={(e) => updateEmail(e.target.value)} required type='email' placeholder='Enter your email' id='email' value={email} />
+        <label>
+          Email
+          <input
+            onChange={e => updateEmail(e.target.value)}
+            required
+            type="email"
+            placeholder="Enter your email"
+            id="email"
+            value={email}
+          />
         </label>
-        <label>Password
-              <input onChange={(e) => updatePassword(e.target.value)} required type='password' placeholder='Enter your password' id='password' value={password} />
+        <label>
+          Password
+          <input
+            onChange={e => updatePassword(e.target.value)}
+            required
+            type="password"
+            placeholder="Enter your password"
+            id="password"
+            value={password}
+          />
         </label>
-        <button type='submit'>Submit</button>
-        <Link className='pop-up-link' to='/sign-up'>Sign Up Here</Link>
+        <button type="submit">Submit</button>
+        <Link className="pop-up-link" to="/sign-up">
+          Sign Up Here
+        </Link>
       </form>
     </Fragment>
-  )
-}
+  );
+};
 
-export const mapDispatchToProps = (dispatch) => ({
-  getUser: (id) => dispatch(getUser(id)),
-  getUserEvents: (id) => dispatch(getUserEvents(id))
+export const mapDispatchToProps = dispatch => ({
+  getUser: id => dispatch(getUser(id)),
+  getUserEvents: id => dispatch(getUserEvents(id)),
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(
+  null,
+  mapDispatchToProps
+)(Login);
