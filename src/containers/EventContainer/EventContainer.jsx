@@ -23,15 +23,8 @@ export const filterEventsByDate = (userEvents, future) => {
   });
 };
 
-export const EventContainer = ({
-  pathname,
-  events,
-  searchText,
-  userEvents,
-}) => {
-  const styles = pathname.includes('profile')
-    ? 'EventContainer profile'
-    : 'EventContainer home';
+export const EventContainer = ({ pathname, events, searchText, userEvents }) => {
+  const styles = pathname.includes('profile') ? 'EventContainer profile' : 'EventContainer home';
 
   let shownEvents;
 
@@ -45,6 +38,7 @@ export const EventContainer = ({
     shownEvents = searchText.length ? filterEvents(events, searchText) : events;
   }
 
+  // the events pulled from state will be filtered according to the current pages pathname then mapped over and rendered in the event container
   return (
     <div className={styles}>
       {shownEvents.length ? (
