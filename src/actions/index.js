@@ -1,30 +1,29 @@
 export const setEvents = events => ({
   type: 'SET_EVENTS',
-  events
+  events,
 });
 
 export const setUser = user => ({
   type: 'SET_USER',
-  user
+  user,
 });
 
 export const setUserEvents = events => ({
   type: 'SET_USER_EVENTS',
-  events
+  events,
 });
 
 export const setLoading = loading => ({
   type: 'SET_LOADING',
-  loading
+  loading,
 });
 
 export const setError = error => ({
   type: 'SET_ERROR',
-  error
+  error,
 });
 
 export const setSearchText = searchText => ({
   type: 'SET_SEARCH_TEXT',
-  searchText
-})
-
+  searchText,
+});

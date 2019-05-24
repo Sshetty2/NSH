@@ -1,8 +1,8 @@
 export const eventsReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_EVENTS':
-      return action.events
+      return action.events;
     default:
-      return state
+      return state;
   }
-}
+};

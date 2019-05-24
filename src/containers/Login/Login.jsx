@@ -4,7 +4,7 @@ import { getUser } from '../../thunks/getUser';
 import { getUserEvents } from '../../thunks/getUserEvents';
 import { connect } from 'react-redux';
 
-export const Login = ({ getUser, getUserEvents, history }) => {
+const Login = ({ getUser, getUserEvents, history }) => {
   const [email, updateEmail] = useState('');
   const [password, updatePassword] = useState('');
 
